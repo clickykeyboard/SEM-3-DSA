@@ -141,6 +141,21 @@ void deleteNodeAtSpecificPosition(int position) {
     nodes--;
 }
 
+void searchNode(int data) {
+
+    temporary = head;
+
+    while (temporary != NULL) {
+        if (temporary->data == data) {
+            cout << "Found " << data << " " << endl;
+            break;
+        }
+
+        temporary = temporary->nextNode;
+    }
+
+}
+
 main() {
 
     createList(5);
