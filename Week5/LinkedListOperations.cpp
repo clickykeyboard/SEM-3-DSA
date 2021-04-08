@@ -64,34 +64,28 @@ void insertNodeAtSpecificPosition(int position, int data) {
         return;
     }
 
-    int first = 1;
-
     temporary = head;
-    while (temporary != NULL) {
-        if (position - 1 == first) {
-            newNode = new node();
-            newNode->data = data;
-            newNode->nextNode = temporary->nextNode;
-            temporary->nextNode = newNode;
-        }
-    
-        first++;
+    for (int i = 1; i < position - 1; i++) {
         temporary = temporary->nextNode;
     }
 
-    nodes++;
+    newNode = new node();
+    newNode->data = data;
+    newNode->nextNode = temporary->nextNode;
+    temporary->nextNode = newNode;
 
+    nodes++;
 }
 
 void display() {
 
     temporary = head;
     while (temporary != NULL) {
-        cout << temporary->data << endl;
+        cout << temporary->data << " ";
         temporary = temporary->nextNode;
     }
 
-    cout << "-----------" << endl;
+    cout << endl << "-----------" << endl;
 
 }
 
@@ -123,9 +117,9 @@ void deleteNodeAtEnd() {
 void deleteNodeAtSpecificPosition(int position) {
     int first = 1;
 
-    node *temporary2;
-    node *temporary3;
-    temporary = head;
+    node *temporary2;                                          
+    node *temporary3;                                          
+    temporary = head;                                          
 
     while (temporary != NULL) {
         if (position == first) {
@@ -171,19 +165,20 @@ main() {
     insertNodeAtEnd(9);
 
     insertNodeAtSpecificPosition(3, 44);
-
     display();
 
     deleteNodeAtBeginning();
-
     display();
 
     deleteNodeAtEnd();
-
     display();
 
     searchNode(8);
 
-    searchNode(8);
+    insertNodeAtSpecificPosition(6, 32);
+    display();
+
+    deleteNodeAtSpecificPosition(5);
+    display();
 
 }
