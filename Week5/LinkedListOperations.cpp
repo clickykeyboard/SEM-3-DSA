@@ -171,7 +171,7 @@ main() {
     cout << "Create a linked list first: \n";
     cout << "Enter the data: ";
 
-    int data;
+    int data, position;
     cin >> data;
 
     createList(data);
@@ -195,81 +195,78 @@ main() {
         cout << "-----------" << endl;
 
         cin >> choice;
-        if (choice < 1 || choice > 10) {
-            cout << "Please enter a valid choice" << endl;
-        }
+        switch (choice) {
+            case 1:
+                cout << "-----------" << endl;
+                cout << "Enter the data: ";
+                cin >> data;
+                insertNodeAtStart(data);
+                cout << "Node inserted at start successfully!";
+                break;
 
-        if (choice == 1) {
-            cout << "-----------" << endl;
-            cout << "Enter the data: ";
-            cin >> data;
-            insertNodeAtStart(data);
-            cout << "Node inserted at start successfully!";
-        }
+            case 2:
+                cout << "-----------" << endl;
+                cout << "Enter the data: ";
+                cin >> data;
+                insertNodeAtEnd(data);
+                cout << "Node inserted at end successfully!";
+                break;
 
-        if (choice == 2) {
-            cout << "-----------" << endl;
-            cout << "Enter the data: ";
-            cin >> data;
-            insertNodeAtEnd(data);
-            cout << "Node inserted at end successfully!";
-        }
+            case 3:
+                cout << "-----------" << endl;
+                cout << "Enter the data: ";
+                cin >> data;
+                cout << "Enter the position: ";
+                cin >> position;
+                insertNodeAtSpecificPosition(position, data);
+                cout << "Node inserted at position " << position << " successfully!" << endl;
+                break;
 
-        if (choice == 3) {
-            cout << "-----------" << endl;
-            cout << "Enter the data: ";
-            cin >> data;
-            int position;
-            cout << "Enter the position: ";
-            cin >> position;
-            insertNodeAtSpecificPosition(position, data);
-            cout << "Node inserted at position " << position << " successfully!" << endl;
-        }
+            case 4:
+                cout << "-----------" << endl;
+                deleteNodeAtBeginning();
+                cout << "Node deleted at start successfully!" << endl;
+                break;
 
-        if (choice == 4) {
-            cout << "-----------" << endl;
-            deleteNodeAtBeginning();
-            cout << "Node deleted at start successfully!" << endl;
-        }
+            case 5:
+                cout << "-----------" << endl;
+                cout << "Enter the position: ";
+                cin >> position;
+                deleteNodeAtSpecificPosition(position);
+                cout << "Node deleted at " << position << " successfully!" << endl;
+                break;
 
-        if (choice == 5) {
-            cout << "-----------" << endl;
-            int position;
-            cout << "Enter the position: ";
-            cin >> position;
-            deleteNodeAtSpecificPosition(position);
-            cout << "Node deleted at " << position << " successfully!" << endl;
-        }
+            case 6:
+                cout << "-----------" << endl;
+                deleteNodeAtEnd();
+                cout << "Node deleted at end successfully!" << endl;
+                break;
+            case 7:
+                cout << "-----------" << endl;
+                cout << "Enter the value to search: " << endl;
+                cin >> data;
+                searchNode(data);
+                break;
 
-        if (choice == 6) {
-            cout << "-----------" << endl;
-            deleteNodeAtEnd();
-            cout << "Node deleted at end successfully!" << endl;
-        }
+            case 8:
+                cout << "-----------" << endl;
+                cout << "Enter the value: " << endl;
+                cin >> data;
+                findGreaterValue(data);
+                break;
 
-        if (choice == 7) {
-            cout << "-----------" << endl;
-            cout << "Enter the value to search: " << endl;
-            cin >> data;
-            searchNode(data);
-        }
+            case 9:
+                cout << "-----------" << endl;
+                display();
+                break;
+            
+            case 10:
+                cout << "Exiting...";
+                return 1; // Return out of the main function 😉
 
-        if (choice == 8) {
-            cout << "-----------" << endl;
-            cout << "Enter the value: " << endl;
-            cin >> data;
-            findGreaterValue(data);
-        }
+            default:
+                cout << "Please enter a valid choice" << endl;
 
-        if (choice == 9) {
-            cout << "-----------" << endl;
-            display();
-        }
-
-        if (choice == 10) {
-            cout << "Exiting...";
-            break;
         }
     }
-
 }
