@@ -148,6 +148,24 @@ void searchNode(int data) {
     }
 }
 
+
+void findGreaterValue(int data) {
+    temporary = head;
+    int currentGreaterValue = temporary->data;
+
+    while (temporary != NULL) {
+        if (currentGreaterValue < temporary->data) {
+            currentGreaterValue = temporary->data;
+        }
+
+        temporary = temporary->nextNode;
+    }
+
+    if (data > currentGreaterValue) {
+        cout << "The value specified is the greatest value.";
+    }
+}
+
 main() {
 
     cout << "Create a linked list first: \n";
@@ -234,6 +252,13 @@ main() {
             cout << "Enter the value to search: " << endl;
             cin >> data;
             searchNode(data);
+        }
+
+        if (choice == 8) {
+            cout << "-----------" << endl;
+            cout << "Enter the value: " << endl;
+            cin >> data;
+            findGreaterValue(data);
         }
 
         if (choice == 9) {
