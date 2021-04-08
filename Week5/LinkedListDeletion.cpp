@@ -128,14 +128,14 @@ void deleteNodeAtSpecificPosition(int position) {
     temporary = head;
 
     while (temporary != NULL) {
-        if (pos == first) {
-            temporary2 = temp->nextNode;
-            temporary3 = temp2->nextNode;
-            temporary->next = temporary3;
+        if (position == first) {
+            temporary2 = temporary->nextNode;
+            temporary3 = temporary2->nextNode;
+            temporary->nextNode = temporary3;
         }
         
-    first++;
-    temporary = temporary->nextNode;
+        first++;
+        temporary = temporary->nextNode;
     }
 
     nodes--;
@@ -181,6 +181,8 @@ main() {
     deleteNodeAtEnd();
 
     display();
+
+    searchNode(8);
 
     searchNode(8);
 
