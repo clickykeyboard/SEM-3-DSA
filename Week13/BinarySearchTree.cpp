@@ -33,6 +33,36 @@ void createTree(int data) {
     printf("The tree root has been created\n");
 }
 
+void insertNode(Node *node, int data) {
+    if (data > node->data) {        // If current node data is greater, go on left
+        if (node->right == NULL) {   // Check if the current node's left is NULL
+            node->right = createNode(data);
+            return;
+        }
+
+        insertNode(node->right, data);
+    }
+
+    if (data <= node->data) {
+      if (node->left == NULL) {
+            node->left = createNode(data);
+            return;
+        }
+        
+        insertNode(node->left, data);  
+    }
+
+}
+
 int main() {
+
     createTree(4);
+    cout << "root: " << rootNode->data << " " << rootNode->left << " " << rootNode->right << endl;
+    insertNode(rootNode, 3);
+    cout << "root: " << rootNode->left->data << " " << rootNode->left->left << " " << rootNode->left->right << endl;
+    insertNode(rootNode, 6);
+    cout << "root: " << rootNode->right->data << " " << rootNode->right->left << " " << rootNode->right->right << endl;
+    insertNode(rootNode, 12);
+    cout << "root: " << rootNode->right->right->data << " " << rootNode->right->right->left << " " << rootNode->right->right->right << endl;
+
 }
