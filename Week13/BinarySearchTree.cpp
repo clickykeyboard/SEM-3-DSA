@@ -51,18 +51,34 @@ void insertNode(Node *node, int data) {
         
         insertNode(node->left, data);  
     }
-
 }
+
+Node* searchNode(Node *node, int data) {
+    if (data == node->data) {
+        cout << "Node found: " << node->data << ", " << node << endl;
+        return node;
+    }
+
+    if (data <= node->data) {
+        return searchNode(node->left, data);
+    }
+
+    if (data > node->data) {
+        return searchNode(node->right, data);
+    }
+
+    return NULL;
+}
+
 
 int main() {
 
     createTree(4);
-    cout << "root: " << rootNode->data << " " << rootNode->left << " " << rootNode->right << endl;
     insertNode(rootNode, 3);
-    cout << "root: " << rootNode->left->data << " " << rootNode->left->left << " " << rootNode->left->right << endl;
     insertNode(rootNode, 6);
-    cout << "root: " << rootNode->right->data << " " << rootNode->right->left << " " << rootNode->right->right << endl;
     insertNode(rootNode, 12);
-    cout << "root: " << rootNode->right->right->data << " " << rootNode->right->right->left << " " << rootNode->right->right->right << endl;
+    insertNode(rootNode, 13);
+    insertNode(rootNode, 11);
 
+    searchNode(rootNode, 11);
 }
