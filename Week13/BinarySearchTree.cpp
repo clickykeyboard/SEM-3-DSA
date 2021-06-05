@@ -33,11 +33,11 @@ void createTree(int data) {
     printf("The tree root has been created\n");
 }
 
-void insertNode(Node *node, int data) {
+Node* insertNode(Node *node, int data) {
     if (data > node->data) {        // If current node data is greater, go on left
         if (node->right == NULL) {   // Check if the current node's left is NULL
             node->right = createNode(data);
-            return;
+            return node->right;
         }
 
         insertNode(node->right, data);
@@ -46,28 +46,28 @@ void insertNode(Node *node, int data) {
     if (data <= node->data) {
       if (node->left == NULL) {
             node->left = createNode(data);
-            return;
+            return node->left;
         }
         
         insertNode(node->left, data);  
     }
 }
 
-Node* searchNode(Node *node, int data) {
-    if (data == node->data) {
-        cout << "Node found: " << node->data << ", " << node << endl;
-        return node;
+void checkNodeStatus(Node *node) {
+    if (node->left != NULL || node->right != NULL) {
+        cout << "The node is a parent" << endl;
+        return;
     }
 
-    if (data <= node->data) {
-        return searchNode(node->left, data);
-    }
+    cout << "The node is a child/leaf" << endl;
+}
 
-    if (data > node->data) {
-        return searchNode(node->right, data);
-    }
+void inOrder(Node* node) {
+    if (node == NULL) return;
 
-    return NULL;
+    inOrder(node->left);
+    cout << node->data << " ";
+    inOrder(node->right);
 }
 
 
@@ -75,10 +75,9 @@ int main() {
 
     createTree(4);
     insertNode(rootNode, 3);
-    insertNode(rootNode, 6);
-    insertNode(rootNode, 12);
-    insertNode(rootNode, 13);
-    insertNode(rootNode, 11);
+    insertNode(rootNode, 5);
+    insertNode(rootNode, 16);
+    insertNode(rootNode, 10);
 
-    searchNode(rootNode, 11);
+    inOrder(rootNode);
 }
