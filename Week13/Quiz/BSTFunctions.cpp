@@ -99,7 +99,6 @@ void displayMultiplesOf3(Node *root) {
 
 int sumOfNodes = 0;
 int numberOfNodes = 0;
-
 void getAverage(Node *root) {
     
     if (root == NULL) {
