@@ -62,18 +62,15 @@ void checkNodeStatus(Node *node) {
     cout << "The node is a child/leaf" << endl;
 }
 
-int nodesDataSum = 0;
-
-void preOrder(Node *root, int *nodesChecked) {
+void preOrder(Node *root) {
     if (root == NULL) {
         return;
     }
 
 
     cout << root->data << " ";
-    *nodesChecked += 1;
-    preOrder(root->left, nodesChecked);
-    preOrder(root->right, nodesChecked);
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
 void displayEvenData(Node *root) {
