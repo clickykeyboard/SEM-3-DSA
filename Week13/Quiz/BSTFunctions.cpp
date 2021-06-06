@@ -51,6 +51,8 @@ Node* insertNode(Node *node, int data) {
         
         insertNode(node->left, data);  
     }
+
+    return NULL;
 }
 
 void checkNodeStatus(Node *node) {
